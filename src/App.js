@@ -14,7 +14,7 @@ import type { GraphQLSchema } from "graphql";
 
 function fetcher(params: Object): Object {
   return fetch(
-    "https://serve.onegraph.com/dynamic?app_id=c333eb5b-04b2-4709-9246-31e18db397e1",
+    "https://disappearances.grupovisual.org/v1/graphql",
     {
       method: "POST",
       headers: {
@@ -38,42 +38,23 @@ function fetcher(params: Object): Object {
 
 const DEFAULT_QUERY = `# shift-option/alt-click on a query below to jump to it in the explorer
 # option/alt-click on a field in the explorer to select all subfields
-query npmPackage {
-  npm {
-    package(name: "onegraph-apollo-client") {
-      name
-      homepage
-      downloads {
-        lastMonth {
-          count
-        }
+
+# Below is a query that grabs all disappearance reports from 2010 along with 
+# details about the location the disappearance was reported in and the 2010
+# Census population total for the report.
+
+query CenapiReportesQuery {
+  processed_cenapi(where: {fecha_evento_year: {_eq: 2010}}) {
+    fecha_evento
+    fecha_reporte
+    vivo_o_muerto
+		reporte_localizacion {
+      nom_mun
+      nom_ent
+      censo_2010 {
+        pobtot
       }
     }
-  }
-}
-
-query graphQLPackage {
-  npm {
-    package(name: "graphql") {
-      name
-      homepage
-      downloads {
-        lastMonth {
-          count
-        }
-      }
-    }
-  }
-}
-
-fragment bundlephobiaInfo on BundlephobiaDependencyInfo {
-  name
-  size
-  version
-  history {
-    dependencyCount
-    size
-    gzip
   }
 }`;
 
