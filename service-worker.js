@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/graphiql-explorer-example/precache-manifest.f13dafedb4d0d9ceb0e739aac58f8101.js"
+  "/disappearances-api/precache-manifest.97da6f6b6c87bb0441c78b0fabfe8d10.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/graphiql-explorer-example/index.html", {
+workbox.routing.registerNavigationRoute("/disappearances-api/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
