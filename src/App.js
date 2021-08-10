@@ -150,7 +150,9 @@ class App extends Component<{}, State> {
     const { query, schema } = this.state;
     return (
       <div className="graphiql-container">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.23.0/theme/dracula.css" />
         <GraphiQLExplorer
+          title="Explorar"
           schema={schema}
           query={query}
           onEdit={this._handleEditQuery}
@@ -168,7 +170,11 @@ class App extends Component<{}, State> {
           schema={schema}
           query={query}
           onEditQuery={this._handleEditQuery}
+          editorTheme="dracula"
         >
+          <GraphiQL.Logo>
+            Desapariciones (CENAPI, 2018)
+          </GraphiQL.Logo>
           <GraphiQL.Toolbar>
             <GraphiQL.Button
               onClick={() => this._graphiql.handlePrettifyQuery()}
@@ -177,8 +183,8 @@ class App extends Component<{}, State> {
             />
             <GraphiQL.Button
               onClick={() => this._graphiql.handleToggleHistory()}
-              label="History"
-              title="Show History"
+              label="Histora"
+              title="Mostrar historial"
             />
             <GraphiQL.Button
               onClick={this._handleToggleExplorer}
